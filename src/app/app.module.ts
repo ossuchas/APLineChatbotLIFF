@@ -26,6 +26,7 @@ import { LeadlagByprojectComponent } from './leadlag-byproject/leadlag-byproject
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RegisterComponent } from './register/register.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -1,1 +1,38 @@
-<p>leadlag-byproject works!</p>
+<!-- <p>leadlag-byproject works! v1.0 ทดสอบ</p> -->
+<div class="container" offset-md="2">
+    <div>
+      <!-- <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Select Project" name="messages" type="text" [(ngModel)]="messages">
+        </mat-form-field>
+      </form> -->
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>:: [1] Project ::</mat-card-title>
+        </mat-card-header>
+        <mat-form-field>
+          <mat-label>-- Select Project --</mat-label>
+          <mat-select [(ngModel)]="selected">
+            <mat-option *ngFor="let product of products" [value]="product.ProductID">
+              {{ product.Project }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>:: [2] Period ::</mat-card-title>
+        </mat-card-header>
+        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" name="favoriteSeason"
+          [(ngModel)]="favoriteSeason">
+          <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+            {{season}}
+          </mat-radio-button>
+        </mat-radio-group>
+        <div class="example-button-row">
+          <button mat-raised-button color="primary" (click)="sendMessages()">Submit</button>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
