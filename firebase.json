@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/APLineChatbotLIFF",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
