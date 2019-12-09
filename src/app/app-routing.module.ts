@@ -1,8 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LeadlagByprojectComponent } from './leadlag-byproject/leadlag-byproject.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { RegisterComponent } from './register/register.component';
 
-
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'llbyproject', component: LeadlagByprojectComponent},
+  { path: 'register', component: RegisterComponent},
+  { path: '', redirectTo: '/llbyproject', pathMatch: 'full'},
+  { path: '**', component: PageNotFoundComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
