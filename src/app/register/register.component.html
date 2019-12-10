@@ -1,19 +1,59 @@
 <!-- <p>register works! v.1.0</p> -->
 <div class="container" offset-md="2">
-    <div>
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>:: [1] Project ::</mat-card-title>
-        </mat-card-header>
-        <mat-form-field>
-        </mat-form-field>
-      </mat-card>
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>:: [2] Period ::</mat-card-title>
-        </mat-card-header>
-      </mat-card>
-    </div>
+  <div>
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>AP Line Chatbot Register</mat-card-title>
+      </mat-card-header>
+
+      <!-- <form class="example-form">
+
+        <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Username">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Email">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Password">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Choose a role...</mat-label>
+            <mat-select [(value)]="selected">
+              <mat-option [value]="roles" *ngFor="let roles of Roles">{{roles}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </mat-card-content> -->
+
+
+      <!-- </form> -->
+      <form class="example-form">
+        <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Firstname">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Lastname">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Employee No. Ex. AP003910">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Mobile no.">
+          </mat-form-field>
+        <button mat-stroked-button class="btn-block badge-primary">Register</button>
+        </mat-card-content>
+        </form>
+
+    </mat-card>
   </div>
-
-
+</div>
