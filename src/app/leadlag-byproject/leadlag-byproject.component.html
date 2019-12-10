@@ -13,8 +13,8 @@
         <mat-form-field>
           <mat-label>-- Select Project --</mat-label>
           <mat-select [(ngModel)]="selected">
-            <mat-option *ngFor="let product of products" [value]="product.ProductID">
-              {{ product.Project }}
+            <!-- <mat-option *ngFor="let product of products" [value]="product.ProductID"> {{ product.Project }} -->
+            <mat-option *ngFor="let dl of listItems" [value]="dl"> {{ dl}}
             </mat-option>
           </mat-select>
         </mat-form-field>

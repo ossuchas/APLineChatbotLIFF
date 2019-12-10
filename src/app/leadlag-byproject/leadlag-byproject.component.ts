@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LiffappService, CrmProduct } from '../shared';
+import { LiffappService, CrmProduct, ChatbotMstProjectService, CrmMstProduct } from 'src/app/shared';
 import { MatSnackBar } from '@angular/material';
 
 declare var liff: any;
@@ -24,24 +24,39 @@ export class LeadlagByprojectComponent implements OnInit {
     {ProductID: '40050', Project: '40050: Centro สะพานมหาเจษฎาบดินทร์ฯ'},
     {ProductID: '10200', Project: '10200: Centro รังสิต'},
     {ProductID: '40025', Project: '40025: Centro รังสิต คลอง4 - วงแหวน'}
-  ]
+  ];
 
   constructor(
     private liffService: LiffappService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public serviceMstProject: ChatbotMstProjectService
   ) {
     this.messages = '';
     this.selected = '';
     this.favoriteSeason = '';
     this.initLineLiff();
+
   }
+  public listItems: Array<string> = [];
 
   async ngOnInit() {
     this.messages = '';
     this.selected = '';
     this.favoriteSeason = '';
+
+    this.dropdownMstProjectRefresh();
+
     await this.initLineLiff();
   }
+
+  dropdownMstProjectRefresh() {
+    this.serviceMstProject.getMstProject().subscribe(data => {
+        data.forEach(element => {
+            // tslint:disable-next-line:no-string-literal
+            this.listItems.push(element['projectname'] + ':' + element['productid']);
+        });
+    });
+}
 
   async initLineLiff() {
     try {
@@ -62,7 +77,11 @@ export class LeadlagByprojectComponent implements OnInit {
       });
     } else {
       console.log(this.selected);
-      this.messages = 'proj: ' + this.selected + ', peroid: ' + this.favoriteSeason;
+      const proj = this.selected.split(':');
+      console.log(proj[1]);
+
+      // this.messages = 'proj: ' + this.selected + ', peroid: ' + this.favoriteSeason;
+      this.messages = 'proj: ' + proj[1] + ', peroid: ' + this.favoriteSeason;
       this.userProfile = await liff.getProfile();
       const accessToken = liff.getAccessToken();
       try {
