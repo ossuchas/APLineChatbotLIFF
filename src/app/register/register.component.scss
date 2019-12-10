@@ -1,18 +1,54 @@
-mat-form-field {
+// mat-form-field {
+//   width: 100%;
+// }
+
+// mat-card {
+//   margin: 2px;
+//   // padding: 10%;
+// }
+
+// mat-card-header{
+//   background: black;
+//   // padding: 5px;
+//   color:white;
+// }
+
+// mat-card-content{
+//   margin: 2px;
+// }
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
   width: 100%;
 }
 
-mat-card {
-  margin: 2px;
-  // padding: 10%;
+.example-button-row{
+  margin: 10px;
+  position: absolute; right: 0;
+  // margin-right: 50%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+mat-form-field{
+  width: 100%;
 }
 
 mat-card-header{
+  // background: #921c1e;
   background: black;
-  // padding: 5px;
+  padding: 5px;
   color:white;
 }
 
 mat-card-content{
-  margin: 2px;
+  padding: 10px;
+}
+
+mat-card{
+  margin: 5px;
+  padding:0;
 }
