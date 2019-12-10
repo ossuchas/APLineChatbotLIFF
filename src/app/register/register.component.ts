@@ -61,7 +61,8 @@ export class RegisterComponent implements OnInit {
     ) {
       console.log('Empthy Project');
       this.snackBar.open('Please fill in all info ...!!', '', {
-        duration: 3000
+        duration: 2500,
+        verticalPosition: 'top'
       });
     } else {
       console.log(this.firstname);
@@ -73,12 +74,12 @@ export class RegisterComponent implements OnInit {
       // console.log(proj[1]);
 
       // this.messages = 'proj: ' + proj[1] + ', peroid: ';
-      this.userProfile = await liff.getProfile();
-      const accessToken = liff.getAccessToken();
+      // this.userProfile = await liff.getProfile();
+      // const accessToken = liff.getAccessToken();
       try {
         const successMsgs = await liff.sendMessages([{
           type: 'text',
-          text: this.messages
+          text: this.firstname
         }
       ]);
 
