@@ -15,10 +15,11 @@ export class RegisterComponent implements OnInit {
   selected: string;
 
   // Input value
-  firstname: string;
-  lastname: string;
+  // firstname: string;
+  // lastname: string;
   employeeid: string;
-  mobile: string;
+  // mobile: string;
+  email: string;
 
 
   constructor(
@@ -26,20 +27,22 @@ export class RegisterComponent implements OnInit {
     private snackBar: MatSnackBar,
   ) {
     this.messages = '';
-    this.firstname = '';
-    this.lastname = '';
+    // this.firstname = '';
+    // this.lastname = '';
     this.employeeid = '';
-    this.mobile = '';
+    // this.mobile = '';
+    this.email = '';
 
     this.initLineLiff();
   }
 
   async ngOnInit() {
     this.messages = '';
-    this.firstname = '';
-    this.lastname = '';
+    // this.firstname = '';
+    // this.lastname = '';
     this.employeeid = '';
-    this.mobile = '';
+    // this.mobile = '';
+    this.email = '';
 
     await this.initLineLiff();
   }
@@ -56,30 +59,29 @@ export class RegisterComponent implements OnInit {
 
   async sendMessages() {
 
-    if (this.firstname === '' || this.lastname === ''
-    || this.employeeid === '' || this.mobile === ''
-    ) {
-      console.log('Empthy Project');
-      this.snackBar.open('Please fill in all info ...!!', '', {
+    if (this.employeeid === '' || this.email === '') {
+      // console.log('Empthy Project');
+      this.snackBar.open('Please fill in email or employee no. info ...!!', '', {
         duration: 2500,
         verticalPosition: 'top'
       });
     } else {
-      console.log(this.firstname);
-      console.log(this.lastname);
+      // console.log(this.firstname);
+      // console.log(this.lastname);
       console.log(this.employeeid);
-      console.log(this.mobile);
+      console.log(this.email);
+      // console.log(this.mobile);
       // console.log(this.selected);
       // const proj = this.selected.split(':');
       // console.log(proj[1]);
 
-      // this.messages = 'proj: ' + proj[1] + ', peroid: ';
+      this.messages = 'register=>emp: ' + this.employeeid + ', email: ' + this.email;
       // this.userProfile = await liff.getProfile();
       // const accessToken = liff.getAccessToken();
       try {
         const successMsgs = await liff.sendMessages([{
           type: 'text',
-          text: this.firstname
+          text: this.messages
         }
       ]);
 
