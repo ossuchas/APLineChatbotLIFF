@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LiffappService } from 'src/app/shared';
+import { LiffappService, ChatbotAuthenService } from 'src/app/shared';
 import { MatSnackBar } from '@angular/material';
 
 declare var liff: any;
@@ -13,6 +13,10 @@ export class RegisterComponent implements OnInit {
   messages: string;
   userProfile: any;
   selected: string;
+  hide = true;
+
+  username: string;
+  password: string;
 
   // Input value
   // firstname: string;
@@ -24,6 +28,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private liffService: LiffappService,
+    private authen: ChatbotAuthenService,
     private snackBar: MatSnackBar,
   ) {
     this.messages = '';
@@ -32,6 +37,8 @@ export class RegisterComponent implements OnInit {
     this.employeeid = '';
     // this.mobile = '';
     this.email = '';
+    this.username = '';
+    this.password = '';
 
     this.initLineLiff();
   }
@@ -43,6 +50,8 @@ export class RegisterComponent implements OnInit {
     this.employeeid = '';
     // this.mobile = '';
     this.email = '';
+    this.username = '';
+    this.password = '';
 
     await this.initLineLiff();
   }
@@ -59,23 +68,40 @@ export class RegisterComponent implements OnInit {
 
   async sendMessages() {
 
-    if (this.employeeid === '' || this.email === '') {
+    if (this.username === '' && this.password === '') {
       // console.log('Empthy Project');
-      this.snackBar.open('Please fill in email or employee no. info ...!!', '', {
+      // this.snackBar.open('Please fill in email or password....!!', '', {
+      this.snackBar.open('Blank is not allow, please fill in username and password....!!', '', {
+        duration: 2500,
+        verticalPosition: 'top'
+      });
+    } else if (this.username === '' || this.password === ''){
+      this.snackBar.open('Please fill in username or password....!!', '', {
         duration: 2500,
         verticalPosition: 'top'
       });
     } else {
-      // console.log(this.firstname);
-      // console.log(this.lastname);
-      console.log(this.employeeid);
-      console.log(this.email);
-      // console.log(this.mobile);
-      // console.log(this.selected);
-      // const proj = this.selected.split(':');
-      // console.log(proj[1]);
+      // console.log(this.username);
+      // console.log(this.password);
 
-      this.messages = 'register=>emp: ' + this.employeeid + ', email: ' + this.email;
+      this.authen.checkAuthorized(this.username, this.password).subscribe(
+        data => {
+          console.log(data);
+          this.snackBar.open('You have signed up successfully', '', {
+            duration: 2500,
+            verticalPosition: 'top'
+          });
+        },
+        error => {
+          console.log(error['message']);
+          this.snackBar.open('Error: Can not sign up, you are unauthorized!!', '', {
+            duration: 2500,
+            verticalPosition: 'top'
+          });
+        });
+
+      // this.messages = 'register=>emp: ' + this.employeeid + ', email: ' + this.email;
+      this.messages = 'register=>emp: ' + this.employeeid + ', password: ********';
       // this.userProfile = await liff.getProfile();
       // const accessToken = liff.getAccessToken();
       try {

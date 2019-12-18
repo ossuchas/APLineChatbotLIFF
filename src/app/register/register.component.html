@@ -43,16 +43,20 @@
             <input matInput placeholder="Lastname" name="lastname" [(ngModel)]="lastname">
           </mat-form-field> -->
 
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Employee No. Ex. AP003910" name="employeeid" [(ngModel)]="employeeid">
-          </mat-form-field>
-
           <!-- <mat-form-field class="example-full-width">
-            <input matInput placeholder="Mobile no." name="mobile" [(ngModel)]="mobile">
+            <input matInput placeholder="Employee No. Ex. AP003910" name="employeeid" [(ngModel)]="employeeid">
           </mat-form-field> -->
-
+          <!-- <mat-form-field class="example-full-width">
+            <input matInput placeholder="Username or Email" name="email" [(ngModel)]="email">
+          </mat-form-field> -->
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Email" name="email" [(ngModel)]="email">
+            <input matInput placeholder="Username or Email" name="username" [(ngModel)]="username">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
           </mat-form-field>
           <button mat-stroked-button class="btn-block badge-primary" (click)="sendMessages()">Register</button>
         </mat-card-content>
