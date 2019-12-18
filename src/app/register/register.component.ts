@@ -18,12 +18,10 @@ export class RegisterComponent implements OnInit {
   username: string;
   password: string;
 
-  // Input value
-  // firstname: string;
-  // lastname: string;
   employeeid: string;
-  // mobile: string;
   email: string;
+
+  success: boolean;
 
 
   constructor(
@@ -39,6 +37,7 @@ export class RegisterComponent implements OnInit {
     this.email = '';
     this.username = '';
     this.password = '';
+    this.success = false;
 
     this.initLineLiff();
   }
@@ -52,6 +51,7 @@ export class RegisterComponent implements OnInit {
     this.email = '';
     this.username = '';
     this.password = '';
+    this.success = false;
 
     await this.initLineLiff();
   }
@@ -85,37 +85,79 @@ export class RegisterComponent implements OnInit {
       // console.log(this.password);
 
       this.authen.checkAuthorized(this.username, this.password).subscribe(
-        data => {
+        async data => {
           console.log(data);
-          this.snackBar.open('You have signed up successfully', '', {
-            duration: 2500,
-            verticalPosition: 'top'
-          });
+          this.success = true;
+          // this.snackBar.open('You have signed up successfully', '', {
+          //   duration: 2500,
+          //   verticalPosition: 'top'
+          // });
+          console.log(this.success);
+          console.log(this.messages);
+
+          this.messages = 'register=>emp: ' + this.username + ', password: ********';
+
+
+          try {
+            const successMsgs = await liff.sendMessages([{
+              type: 'text',
+              text: this.messages
+            }
+          ]);
+
+            liff.closeWindow();
+          } catch (e) {
+
+          }
+
         },
-        error => {
+        async error => {
           console.log(error['message']);
-          this.snackBar.open('Error: Can not sign up, you are unauthorized!!', '', {
-            duration: 2500,
-            verticalPosition: 'top'
-          });
+          console.log(this.success);
+          console.log(this.messages);
+          this.success = false;
+          // this.snackBar.open('Error: Can not sign up, you are unauthorized!!', '', {
+          //   duration: 2500,
+          //   verticalPosition: 'top'
+          // });
+
+          this.messages = 'can not sign up, you are unauthorized!!';
+
+          try {
+            const successMsgs = await liff.sendMessages([{
+              type: 'text',
+              text: this.messages
+            }
+          ]);
+
+            liff.closeWindow();
+          } catch (e) {
+
+          }
         });
 
       // this.messages = 'register=>emp: ' + this.employeeid + ', email: ' + this.email;
-      this.messages = 'register=>emp: ' + this.employeeid + ', password: ********';
-      // this.userProfile = await liff.getProfile();
-      // const accessToken = liff.getAccessToken();
-      try {
-        const successMsgs = await liff.sendMessages([{
-          type: 'text',
-          text: this.messages
-        }
-      ]);
+    //   console.log(this.success);
+    //   if (this.success) {
+    //     this.messages = 'register=>emp: ' + this.username + ', password: ********';
+    //   } else {
+    //     this.messages = 'Can not sign up, you are unauthorized';
+    //   }
+    //   console.log(this.messages);
+    //   // this.userProfile = await liff.getProfile();
+    //   // const accessToken = liff.getAccessToken();
+    //   try {
+    //     const successMsgs = await liff.sendMessages([{
+    //       type: 'text',
+    //       text: this.messages
+    //     }
+    //   ]);
 
-      liff.closeWindow();
+    //   liff.closeWindow();
 
-    } catch (e) {
-      // alert(e);
-    }
+    // } catch (e) {
+    //   // alert(e);
+    // }
     }
   }
 
