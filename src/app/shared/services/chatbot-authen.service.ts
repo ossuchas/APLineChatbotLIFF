@@ -17,7 +17,8 @@ export class ChatbotAuthenService {
   // Http Headers
   httpOptions = {
       headers: new HttpHeaders({
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
       })
   };
 
@@ -25,8 +26,8 @@ export class ChatbotAuthenService {
 
   checkAuthorized(_username: string, _password: string): Observable<object> {
       return this.http.post(this.APIUrl + '/checkauthorized', { username: _username, password: _password }, this.httpOptions)
+      // return this.http.get(this.APIUrl + '/checkauthorized', { 'username': _username, 'password': _password});
   }
-
 
   // Error handling
   errorHandl(error) {
