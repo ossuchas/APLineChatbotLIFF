@@ -58,6 +58,9 @@
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
           </mat-form-field>
+          <div class="loading-indicator">
+            <mat-spinner [diameter]="60" *ngIf="loading"></mat-spinner>
+        </div>
           <button mat-stroked-button class="btn-block badge-primary" (click)="sendMessages()">Register</button>
         </mat-card-content>
       </form>

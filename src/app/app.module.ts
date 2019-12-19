@@ -22,7 +22,8 @@ import {
   MatCardModule,
   MatPaginatorModule,
   MatRadioModule,
-  MatSelectModule
+  MatSelectModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 import { LeadlagByprojectComponent } from './leadlag-byproject/leadlag-byproject.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -55,7 +56,8 @@ import { RegisterComponent } from './register/register.component';
     MatCardModule,
     MatPaginatorModule,
     MatRadioModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

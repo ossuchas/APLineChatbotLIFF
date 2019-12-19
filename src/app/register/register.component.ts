@@ -22,6 +22,7 @@ export class RegisterComponent implements OnInit {
   email: string;
 
   success: boolean;
+  loading = false;
 
 
   constructor(
@@ -38,6 +39,7 @@ export class RegisterComponent implements OnInit {
     this.username = '';
     this.password = '';
     this.success = false;
+    this.loading = false;
 
     this.initLineLiff();
   }
@@ -52,6 +54,7 @@ export class RegisterComponent implements OnInit {
     this.username = '';
     this.password = '';
     this.success = false;
+    this.loading = false;
 
     await this.initLineLiff();
   }
@@ -83,7 +86,7 @@ export class RegisterComponent implements OnInit {
     } else {
       // console.log(this.username);
       // console.log(this.password);
-
+      this.loading = true;
       this.authen.checkAuthorized(this.username, this.password).subscribe(
         async data => {
           console.log(data);
@@ -92,8 +95,8 @@ export class RegisterComponent implements OnInit {
           //   duration: 2500,
           //   verticalPosition: 'top'
           // });
-          console.log(this.success);
-          console.log(this.messages);
+          // console.log(this.success);
+          // console.log(this.messages);
 
           this.messages = 'register=>emp: ' + this.username + ', password: ********';
 
@@ -112,6 +115,7 @@ export class RegisterComponent implements OnInit {
 
         },
         async error => {
+          this.loading = false;
           console.log(error['message']);
           console.log(this.success);
           console.log(this.messages);

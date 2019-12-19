@@ -52,3 +52,16 @@ mat-card{
   margin: 5px;
   padding:0;
 }
+
+.loading-indicator {
+  position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  // margin: auto;
+  top: 27%;
+  left: 45%;
+  bottom: 0;
+  right: 50%;
+}
