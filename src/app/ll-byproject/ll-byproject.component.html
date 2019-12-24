@@ -1,0 +1,31 @@
+<div class="container" offset-md="2">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>:: Project ::</mat-card-title>
+        </mat-card-header>
+        <mat-form-field>
+          <form class="example-form">
+              <input type="text" placeholder="Project name" aria-label="Project Name" matInput [formControl]="myControl" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option.name}}
+                </mat-option>
+              </mat-autocomplete>
+          </form>
+        </mat-form-field>
+      </mat-card>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>:: Period ::</mat-card-title>
+        </mat-card-header>
+        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" name="favoriteSeason"
+          [(ngModel)]="favoriteSeason">
+          <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+            {{season}}
+          </mat-radio-button>
+        </mat-radio-group>
+        <div class="example-button-row">
+          <button mat-raised-button color="primary" (click)="sendMessages()">Submit</button>
+        </div>
+      </mat-card>
+    </div>

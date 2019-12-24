@@ -7,7 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+
 
 import {
   MatTableModule,
@@ -23,11 +24,13 @@ import {
   MatPaginatorModule,
   MatRadioModule,
   MatSelectModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatAutocompleteModule
 } from '@angular/material';
 import { LeadlagByprojectComponent } from './leadlag-byproject/leadlag-byproject.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RegisterComponent } from './register/register.component';
+import { LlByprojectComponent } from './ll-byproject/ll-byproject.component';
 
 
 @NgModule({
@@ -35,7 +38,8 @@ import { RegisterComponent } from './register/register.component';
     AppComponent,
     LeadlagByprojectComponent,
     PageNotFoundComponent,
-    RegisterComponent
+    RegisterComponent,
+    LlByprojectComponent
   ],
   imports: [
     CommonModule,
@@ -44,6 +48,7 @@ import { RegisterComponent } from './register/register.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     MatTableModule,
     MatIconModule,
     MatButtonModule,
@@ -57,7 +62,8 @@ import { RegisterComponent } from './register/register.component';
     MatPaginatorModule,
     MatRadioModule,
     MatSelectModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]
