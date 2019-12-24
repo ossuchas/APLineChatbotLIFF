@@ -264,8 +264,9 @@ export class LlByprojectComponent implements OnInit {
       const proj = this.selected.split(':');
       console.log(proj[1]);
 
-      this.messages = 'proj: ' + this.selected + ', peroid: ' + this.favoriteSeason;
-      // this.messages = 'proj: ' + proj[1] + ', peroid: ' + this.favoriteSeason;
+      // this.messages = 'proj: ' + this.selected + ', peroid: ' + this.favoriteSeason;
+      this.messages = 'proj: ' + proj[1] + ', peroid: ' + this.favoriteSeason;
+      console.log(this.messages);
       this.userProfile = await liff.getProfile();
       const accessToken = liff.getAccessToken();
       try {
