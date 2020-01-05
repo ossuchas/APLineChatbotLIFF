@@ -125,7 +125,8 @@ export class RegisterComponent implements OnInit {
           //   verticalPosition: 'top'
           // });
 
-          this.messages = 'can not sign up, you are unauthorized!!';
+          // this.messages = 'can not sign up, you are unauthorized!!';
+          this.messages = 'Login failed. Please verify your username or password.';
 
           try {
             const successMsgs = await liff.sendMessages([{
