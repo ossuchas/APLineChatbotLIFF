@@ -20,6 +20,7 @@ export interface User {
 export class LlByprojectComponent implements OnInit {
   messages: string;
   userProfile: any;
+  userId: string;
   selected: string;
 
   favoriteSeason: string;
@@ -218,6 +219,7 @@ export class LlByprojectComponent implements OnInit {
     this.messages = '';
     this.selected = '';
     this.favoriteSeason = '';
+    this.userId = '';
 
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
@@ -233,6 +235,7 @@ export class LlByprojectComponent implements OnInit {
     try {
       const data: any = await this.liffService.initLineLiff();
       this.userProfile = await liff.getProfile();
+      this.userId = this.userProfile.userId;
       console.log(`Hi ${this.userProfile.displayName}!`);
     } catch (err) {
       console.log(err);
@@ -267,8 +270,11 @@ export class LlByprojectComponent implements OnInit {
       // this.messages = 'proj: ' + this.selected + ', peroid: ' + this.favoriteSeason;
       this.messages = 'proj: ' + proj[1] + ', peroid: ' + this.favoriteSeason;
       console.log(this.messages);
+
       this.userProfile = await liff.getProfile();
-      const accessToken = liff.getAccessToken();
+      const accessToken = await liff.getAccessToken();
+
+      // this.messages = this.userId;
       try {
         const successMsgs = await liff.sendMessages([{
           type: 'text',
