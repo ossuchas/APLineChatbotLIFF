@@ -31,6 +31,7 @@ import { LeadlagByprojectComponent } from './leadlag-byproject/leadlag-byproject
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RegisterComponent } from './register/register.component';
 import { LlByprojectComponent } from './ll-byproject/ll-byproject.component';
+import { LeadlagByroleprojectComponent } from './leadlag-byroleproject/leadlag-byroleproject.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { LlByprojectComponent } from './ll-byproject/ll-byproject.component';
     LeadlagByprojectComponent,
     PageNotFoundComponent,
     RegisterComponent,
-    LlByprojectComponent
+    LlByprojectComponent,
+    LeadlagByroleprojectComponent
   ],
   imports: [
     CommonModule,

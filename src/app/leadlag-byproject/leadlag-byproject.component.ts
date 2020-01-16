@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { LiffappService, CrmProduct, ChatbotMstProjectService, CrmMstProduct } from 'src/app/shared';
+import {
+  LiffappService,
+  CrmProduct,
+  ChatbotMstProjectService,
+  CrmMstProduct,
+  UserRoleProject,
+  ChatbotRoleprojectService
+} from 'src/app/shared';
+
 import { MatSnackBar } from '@angular/material';
 
 declare var liff: any;
@@ -13,6 +21,7 @@ export class LeadlagByprojectComponent implements OnInit {
   messages: string;
   userProfile: any;
   selected: string;
+  userId: string;
 
   favoriteSeason: string;
   seasons: string[] = ['Year to Date', 'Quarter (Current Quarter)', 'Week (last week and current week)'];
@@ -195,11 +204,13 @@ export class LeadlagByprojectComponent implements OnInit {
   constructor(
     private liffService: LiffappService,
     private snackBar: MatSnackBar,
-    public serviceMstProject: ChatbotMstProjectService
+    public serviceMstProject: ChatbotMstProjectService,
+    public serviceUserRoleProject: ChatbotRoleprojectService
   ) {
     this.messages = '';
     this.selected = '';
     this.favoriteSeason = '';
+    this.userId = '';
     this.initLineLiff();
 
   }
@@ -209,17 +220,29 @@ export class LeadlagByprojectComponent implements OnInit {
     this.messages = '';
     this.selected = '';
     this.favoriteSeason = '';
-
-    this.dropdownMstProjectRefresh();
+    // this.userId = '';
 
     await this.initLineLiff();
+
+    this.dropdownMstProjectRefresh(this.userId);
+
   }
 
-  dropdownMstProjectRefresh() {
-    this.serviceMstProject.getMstProject().subscribe(data => {
+  dropdownMstProjectRefresh(userId: string) {
+    // console.log(this.userId);
+    // this.userProfile = liff.getProfile();
+    // this.userId = this.userProfile.userId;
+    this.userId = 'U80a30a5bad4ea0f5f7995e5050ab8d7e';
+    // this.serviceMstProject.getMstProject().subscribe(data => {
+    //     data.forEach(element => {
+    //         // tslint:disable-next-line:no-string-literal
+    //         this.listItems.push(element['projectname'] + ':' + element['productid']);
+    //     });
+    // });
+    this.serviceUserRoleProject.getUserRoleProject(this.userId).subscribe(data => {
         data.forEach(element => {
             // tslint:disable-next-line:no-string-literal
-            this.listItems.push(element['projectname'] + ':' + element['productid']);
+            this.listItems.push(element['project_name'] + ':' + element['projectcode']);
         });
     });
 }
@@ -228,6 +251,8 @@ export class LeadlagByprojectComponent implements OnInit {
     try {
       const data: any = await this.liffService.initLineLiff();
       this.userProfile = await liff.getProfile();
+      this.userId = this.userProfile.userId;
+      // this.userId = this.userProfile.userId;
       console.log(`Hi ${this.userProfile.displayName}!`);
     } catch (err) {
       console.log(err);
@@ -246,8 +271,9 @@ export class LeadlagByprojectComponent implements OnInit {
       const proj = this.selected.split(':');
       console.log(proj[1]);
 
-      this.messages = 'proj: ' + this.selected + ', peroid: ' + this.favoriteSeason;
-      // this.messages = 'proj: ' + proj[1] + ', peroid: ' + this.favoriteSeason;
+      // this.messages = 'proj: ' + this.selected + ', peroid: ' + this.favoriteSeason;
+      this.messages = 'proj: ' + proj[1] + ', peroid: ' + this.favoriteSeason;
+      // console.log(this.messages);
       this.userProfile = await liff.getProfile();
       const accessToken = liff.getAccessToken();
       try {

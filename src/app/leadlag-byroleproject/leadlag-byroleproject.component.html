@@ -1,22 +1,18 @@
-<!-- <p>leadlag-byproject works! v1.0 ทดสอบ</p> -->
+<!-- <p>leadlag-byroleproject works!</p> -->
 <div class="container" offset-md="2">
-    <div>
-      <!-- <form class="example-form">
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Select Project" name="messages" type="text" [(ngModel)]="messages">
-        </mat-form-field>
-      </form> -->
       <mat-card>
         <mat-card-header>
           <mat-card-title>:: Project ::</mat-card-title>
         </mat-card-header>
         <mat-form-field>
-          <mat-label>-- Select Project --</mat-label>
-          <mat-select [(ngModel)]="selected">
-            <!-- <mat-option *ngFor="let product of products" [value]="product.ProductID"> {{ product.Project }} -->
-            <mat-option *ngFor="let dl of listItems" [value]="dl"> {{ dl}}
-            </mat-option>
-          </mat-select>
+          <form class="example-form">
+              <input type="text" placeholder="Project name" aria-label="Project Name" matInput [formControl]="myControl" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option.display_project}}
+                </mat-option>
+              </mat-autocomplete>
+          </form>
         </mat-form-field>
       </mat-card>
       <mat-card>
@@ -34,5 +30,4 @@
         </div>
       </mat-card>
     </div>
-  </div>
 
