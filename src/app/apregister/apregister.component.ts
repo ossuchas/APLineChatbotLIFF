@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { LiffappService, ChatbotAuthenService } from 'src/app/shared';
+import { LiffappService, IwebvendorApRegisterService } from 'src/app/shared';
 import { MatSnackBar } from '@angular/material';
 
 declare var liff: any;
 
 @Component({
-  selector: 'app-vendorregister',
-  templateUrl: './vendorregister.component.html',
-  styleUrls: ['./vendorregister.component.scss']
+  selector: 'app-apregister',
+  templateUrl: './apregister.component.html',
+  styleUrls: ['./apregister.component.scss']
 })
-export class VendorregisterComponent implements OnInit {
+export class ApregisterComponent implements OnInit {
   messages: string;
   userProfile: any;
   selected: string;
@@ -17,6 +17,7 @@ export class VendorregisterComponent implements OnInit {
 
   username: string;
   password: string;
+  userId: string
 
   employeeid: string;
   email: string;
@@ -26,7 +27,7 @@ export class VendorregisterComponent implements OnInit {
 
   constructor(
     private liffService: LiffappService,
-    private authen: ChatbotAuthenService,
+    private authen: IwebvendorApRegisterService,
     private snackBar: MatSnackBar,
   ) {
     this.messages = '';
@@ -37,6 +38,7 @@ export class VendorregisterComponent implements OnInit {
     this.email = '';
     this.username = '';
     this.password = '';
+    this.userId = '';
     this.success = false;
     this.loading = false;
 
@@ -79,13 +81,13 @@ export class VendorregisterComponent implements OnInit {
       });
     } else {
       this.loading = true;
-      this.authen.checkAuthorized(this.username, this.password).subscribe(
+      this.userId = this.userProfile.userId;
+      this.authen.vendorregister(this.username, this.password, this.userId).subscribe(
         async data => {
           console.log(data);
           this.success = true;
 
-          // this.messages = 'register=>emp: ' + this.username + ', password: ********';
-          this.messages = this.userProfile.userId;
+          this.messages = 'register=>emp: ' + this.username + ', password: ********';
 
           try {
             const successMsgs = await liff.sendMessages([{
@@ -106,7 +108,7 @@ export class VendorregisterComponent implements OnInit {
           console.log(this.success);
           console.log(this.messages);
           this.success = false;
-          this.messages = 'Login failed. Please verify your username or password.';
+          this.messages = 'Login failed. Please verify your username or password.' + this.userId + ', ' + this.username + ', ' + this.password;
 
           try {
             const successMsgs = await liff.sendMessages([{

@@ -33,6 +33,7 @@ import { RegisterComponent } from './register/register.component';
 import { LlByprojectComponent } from './ll-byproject/ll-byproject.component';
 import { LeadlagByroleprojectComponent } from './leadlag-byroleproject/leadlag-byroleproject.component';
 import { VendorregisterComponent } from './vendorregister/vendorregister.component';
+import { ApregisterComponent } from './apregister/apregister.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { VendorregisterComponent } from './vendorregister/vendorregister.compone
     RegisterComponent,
     LlByprojectComponent,
     LeadlagByroleprojectComponent,
-    VendorregisterComponent
+    VendorregisterComponent,
+    ApregisterComponent
   ],
   imports: [
     CommonModule,
