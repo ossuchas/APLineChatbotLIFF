@@ -13,7 +13,7 @@ export class IwebvendorApRegisterService {
 
   // Base url
   // readonly APIUrl = environment.apiiWebVenor;
-  readonly APIUrl = 'https://1b83a64d.ngrok.io/api/v1';
+  readonly APIUrl = 'https://70abc66f.ngrok.io/api/v1';
 
   httpOptions = {
       headers: new HttpHeaders({
@@ -24,7 +24,7 @@ export class IwebvendorApRegisterService {
 
   private _listeners = new Subject<any>();
 
-  vendorregister(_username: string, _password: string, _userid: string): Observable<object> {
+  apregister(_username: string, _password: string, _userid: string): Observable<object> {
       return this.http.post(this.APIUrl + '/userapregister',
         { user_name: _username, password: _password, user_token_id: _userid }, this.httpOptions
       );

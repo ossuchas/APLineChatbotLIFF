@@ -17,7 +17,7 @@ export class ApregisterComponent implements OnInit {
 
   username: string;
   password: string;
-  userId: string
+  userId: string;
 
   employeeid: string;
   email: string;
@@ -82,7 +82,7 @@ export class ApregisterComponent implements OnInit {
     } else {
       this.loading = true;
       this.userId = this.userProfile.userId;
-      this.authen.vendorregister(this.username, this.password, this.userId).subscribe(
+      this.authen.apregister(this.username, this.password, this.userId).subscribe(
         async data => {
           console.log(data);
           this.success = true;
