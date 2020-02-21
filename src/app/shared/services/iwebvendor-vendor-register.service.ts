@@ -11,8 +11,8 @@ export class IwebvendorVendorRegisterService {
   constructor(private http: HttpClient) {}
 
   // Base url
-  // readonly APIUrl = environment.apiiWebVenor;
-  readonly APIUrl = 'https://70abc66f.ngrok.io/api/v1';
+  readonly APIUrl = environment.apiiWebVenor;
+//   readonly APIUrl = 'https://70abc66f.ngrok.io/api/v1';
 
   httpOptions = {
       headers: new HttpHeaders({

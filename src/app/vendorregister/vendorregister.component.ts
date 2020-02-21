@@ -87,7 +87,7 @@ export class VendorregisterComponent implements OnInit {
           console.log(data);
           this.success = true;
 
-          this.messages = 'register=>emp: ' + this.username + ', password: ********';
+          this.messages = 'register=>username: ' + this.username + ', password: ********';
           // this.messages = this.userProfile.userId;
 
           try {

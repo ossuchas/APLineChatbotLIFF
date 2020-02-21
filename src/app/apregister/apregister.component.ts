@@ -87,7 +87,7 @@ export class ApregisterComponent implements OnInit {
           console.log(data);
           this.success = true;
 
-          this.messages = 'register=>emp: ' + this.username + ', password: ********';
+          this.messages = 'register=>username: ' + this.username + ', password: ********';
 
           try {
             const successMsgs = await liff.sendMessages([{
