@@ -1,0 +1,64 @@
+<!-- <p>helpdeskinquiry works!</p> -->
+<div class="container" offset-md="2">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>:: Sytems ::</mat-card-title>
+        </mat-card-header>
+        <mat-form-field>
+          <mat-label>System Selected</mat-label>
+          <mat-select [formControl]="systemControl">
+            <mat-option *ngFor="let system of systems" [value]="system.value">
+              {{ system.viewValue }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="systemControl.hasError('required')">Please choose a System</mat-error>
+        </mat-form-field>
+      <!-- </mat-card>
+      <mat-card> -->
+        <mat-card-header>
+          <mat-card-title>:: Status ::</mat-card-title>
+        </mat-card-header>
+        <mat-form-field>
+          <mat-label>Status Selected</mat-label>
+          <mat-select [formControl]="statusControl">
+            <mat-option *ngFor="let status of status" [value]="status.value">
+              {{ status.viewValue }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="statusControl.hasError('required')">Please choose a Status</mat-error>
+        </mat-form-field>
+        <div class="example-button-row">
+          <button mat-raised-button color="primary" (click)="sendMessages()">Submit</button>
+        </div>
+      </mat-card>
+      <!-- <mat-card>
+        <mat-card-header>
+          <mat-card-title>:: Status ::</mat-card-title>
+        </mat-card-header>
+        <mat-form-field>
+          <form class="example-form">
+              <input type="text" placeholder="Status" aria-label="Status" matInput [formControl]="myControl" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option.name}}
+                </mat-option>
+              </mat-autocomplete>
+          </form>
+        </mat-form-field>
+      </mat-card>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>:: Period ::</mat-card-title>
+        </mat-card-header>
+        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" name="favoriteSeason"
+          [(ngModel)]="favoriteSeason">
+          <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+            {{season}}
+          </mat-radio-button>
+        </mat-radio-group>
+        <div class="example-button-row">
+          <button mat-raised-button color="primary" (click)="sendMessages()">Submit</button>
+        </div>
+      </mat-card> -->
+    </div>
+

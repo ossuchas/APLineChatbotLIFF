@@ -35,6 +35,7 @@ import { LeadlagByroleprojectComponent } from './leadlag-byroleproject/leadlag-b
 import { VendorregisterComponent } from './vendorregister/vendorregister.component';
 import { ApregisterComponent } from './apregister/apregister.component';
 import { HelpdeskdetailComponent } from './helpdeskdetail/helpdeskdetail.component';
+import { HelpdeskinquiryComponent } from './helpdeskinquiry/helpdeskinquiry.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { HelpdeskdetailComponent } from './helpdeskdetail/helpdeskdetail.compone
     LeadlagByroleprojectComponent,
     VendorregisterComponent,
     ApregisterComponent,
-    HelpdeskdetailComponent
+    HelpdeskdetailComponent,
+    HelpdeskinquiryComponent
   ],
   imports: [
     CommonModule,

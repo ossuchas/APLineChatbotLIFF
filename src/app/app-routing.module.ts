@@ -8,6 +8,7 @@ import { LeadlagByroleprojectComponent } from './leadlag-byroleproject/leadlag-b
 import { VendorregisterComponent } from './vendorregister/vendorregister.component';
 import { ApregisterComponent } from './apregister/apregister.component';
 import { HelpdeskdetailComponent } from './helpdeskdetail/helpdeskdetail.component';
+import { HelpdeskinquiryComponent } from './helpdeskinquiry/helpdeskinquiry.component';
 
 const routes: Routes = [
   { path: 'llbyproject', component: LeadlagByprojectComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'vendorregister', component: VendorregisterComponent},
   { path: 'apregister', component: ApregisterComponent},
   { path: 'helpdeskdetl', component: HelpdeskdetailComponent},
+  { path: 'helpdeskinquiry', component: HelpdeskinquiryComponent},
   { path: '', redirectTo: '/llbyproject', pathMatch: 'full'},
   { path: '**', component: PageNotFoundComponent}
 ];
