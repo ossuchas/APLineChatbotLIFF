@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LiffappService, IwebvendorApRegisterService } from 'src/app/shared';
+import { LiffappService, IwebvendorApRegisterService, ApregisterService } from 'src/app/shared';
 import { MatSnackBar } from '@angular/material';
 
 declare var liff: any;
@@ -27,7 +27,8 @@ export class ApregisterComponent implements OnInit {
 
   constructor(
     private liffService: LiffappService,
-    private authen: IwebvendorApRegisterService,
+    // private authen: IwebvendorApRegisterService,
+    private authen: ApregisterService,
     private snackBar: MatSnackBar,
   ) {
     this.messages = '';

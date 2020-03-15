@@ -69,7 +69,12 @@ export class HelpdeskinquiryComponent implements OnInit {
 
   systems: System[] = [
     { value: 'CRM', viewValue: 'CRM' },
+    { value: 'SAP', viewValue: 'SAP' },
     { value: 'Stock', viewValue: 'Stock' },
+    { value: 'BI', viewValue: 'BI' },
+    { value: 'MIS', viewValue: 'MIS' },
+    { value: 'Tableau', viewValue: 'Tableau' },
+    { value: 'GP Simulation', viewValue: 'GP Simulation' },
   ];
 
   myControl = new FormControl();
