@@ -9,6 +9,7 @@ import { VendorregisterComponent } from './vendorregister/vendorregister.compone
 import { ApregisterComponent } from './apregister/apregister.component';
 import { HelpdeskdetailComponent } from './helpdeskdetail/helpdeskdetail.component';
 import { HelpdeskinquiryComponent } from './helpdeskinquiry/helpdeskinquiry.component';
+import { TimestampComponent } from './timestamp/timestamp.component';
 
 const routes: Routes = [
   { path: 'llbyproject', component: LeadlagByprojectComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'apregister', component: ApregisterComponent},
   { path: 'helpdeskdetl', component: HelpdeskdetailComponent},
   { path: 'helpdeskinquiry', component: HelpdeskinquiryComponent},
+  { path: 'timestamp', component: TimestampComponent},
   { path: '', redirectTo: '/llbyproject', pathMatch: 'full'},
   { path: '**', component: PageNotFoundComponent}
 ];

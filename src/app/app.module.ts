@@ -36,6 +36,7 @@ import { VendorregisterComponent } from './vendorregister/vendorregister.compone
 import { ApregisterComponent } from './apregister/apregister.component';
 import { HelpdeskdetailComponent } from './helpdeskdetail/helpdeskdetail.component';
 import { HelpdeskinquiryComponent } from './helpdeskinquiry/helpdeskinquiry.component';
+import { TimestampComponent } from './timestamp/timestamp.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { HelpdeskinquiryComponent } from './helpdeskinquiry/helpdeskinquiry.comp
     VendorregisterComponent,
     ApregisterComponent,
     HelpdeskdetailComponent,
-    HelpdeskinquiryComponent
+    HelpdeskinquiryComponent,
+    TimestampComponent
   ],
   imports: [
     CommonModule,

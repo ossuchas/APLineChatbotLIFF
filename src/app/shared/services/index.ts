@@ -6,3 +6,4 @@ export * from './iwebvendor-ap-register.service';
 export * from './iwebvendor-vendor-register.service';
 export * from './jobhelpdesk.service';
 export * from './apregister.service';
+export * from './location.service';
