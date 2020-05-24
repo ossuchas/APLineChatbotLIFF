@@ -26,7 +26,16 @@ export class TimestampComponent implements OnInit {
       this.lat = pos.lat;
       this.long = pos.lng;
       console.log(`Positon: ${pos.lng} ${pos.lat}`);
+
+      //13.808463, 100.557649
+
+      const x = this.locationServices.asTheCrowFlies(this.lat, this.long, 13.8080045,100.5591728);
+      console.log('distance = ' + x);
+
+    }, err => {
+      console.log('Error: ' + err.message);
     });
+
 
     await this.initLineLiff();
 
@@ -41,6 +50,14 @@ export class TimestampComponent implements OnInit {
   }
 
   async sendMessagesIn() {
+    this.locationServices.getPosition().then(pos => {
+      this.lat = pos.lat;
+      this.long = pos.lng;
+      console.log(`Positon: ${pos.lng} ${pos.lat}`);
+    }, err => {
+      console.log('Error: ' + err.message);
+    });
+
     this.messages = 'In: ' + this.lat + ',' + this.long;
     console.log(this.messages);
 
@@ -58,6 +75,14 @@ export class TimestampComponent implements OnInit {
   }
 
   async sendMessagesOut() {
+    this.locationServices.getPosition().then(pos => {
+      this.lat = pos.lat;
+      this.long = pos.lng;
+      console.log(`Positon: ${pos.lng} ${pos.lat}`);
+    }, err => {
+      console.log('Error: ' + err.message);
+    });
+
     this.messages = 'Out: ' + this.lat + ',' + this.long;
     console.log(this.messages);
 
